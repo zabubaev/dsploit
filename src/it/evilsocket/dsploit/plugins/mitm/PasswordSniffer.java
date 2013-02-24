@@ -18,23 +18,30 @@
  */
 package it.evilsocket.dsploit.plugins.mitm;
 
-import android.app.*;
 import android.content.*;
 import android.graphics.*;
 import android.os.*;
-import android.view.*;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.*;
-import android.widget.*;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 import it.evilsocket.dsploit.*;
-import it.evilsocket.dsploit.core.*;
 import it.evilsocket.dsploit.gui.dialogs.*;
 import it.evilsocket.dsploit.tools.Ettercap.*;
 import java.io.*;
 import java.util.*;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import it.evilsocket.dsploit.core.System;
 
-public class PasswordSniffer extends Activity 
+public class PasswordSniffer extends SherlockActivity 
 {
 	private static final String TAG = "PASSWORDSNIFFER";
 	
