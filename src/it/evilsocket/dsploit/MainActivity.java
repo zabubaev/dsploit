@@ -18,7 +18,6 @@
  */
 package it.evilsocket.dsploit;
 
-import android.*;
 import android.app.*;
 import android.content.*;
 import android.content.SharedPreferences.*;
@@ -27,7 +26,6 @@ import android.net.*;
 import android.os.*;
 import android.text.*;
 import android.view.*;
-import android.view.ViewGroup.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
 import com.bugsense.trace.*;
@@ -58,7 +56,6 @@ public class MainActivity extends ListActivity
 	private Menu			 mMenu					 = null;
 	private TextView		 mUpdateStatus			 = null;
 	private Toast 			 mToast 			 	 = null;
-	private long  			 mLastBackPressTime 	 = 0;
 	
 	public class TargetAdapter extends ArrayAdapter<Target> 
 	{		
@@ -293,7 +290,7 @@ public class MainActivity extends ListActivity
 	    
         mUpdateReceiver.register( MainActivity.this );
 		
-        startUpdateChecker();
+        //startUpdateChecker();
         stopNetworkDiscovery( true );
         
 		invalidateOptionsMenu();
@@ -364,7 +361,7 @@ public class MainActivity extends ListActivity
 	    mEndpointReceiver.register( MainActivity.this );		
         mUpdateReceiver.register( MainActivity.this );
         
-        startUpdateChecker();
+        //startUpdateChecker();
         startNetworkDiscovery( false );
         
         // if called for the second time after wifi connection
@@ -788,17 +785,7 @@ public class MainActivity extends ListActivity
 	
 	@Override
 	public void onBackPressed() {
-		if( mLastBackPressTime < java.lang.System.currentTimeMillis() - 4000 ) 
-		{
-			mToast = Toast.makeText( this, "Press back again to close this app.", Toast.LENGTH_SHORT );
-			mToast.show();
-			mLastBackPressTime = java.lang.System.currentTimeMillis();
-		} 
-		else
-		{
-			if( mToast != null ) 
-				mToast.cancel();
-			
+		
 			new ConfirmDialog( "Exit", "This will close dSploit, are you sure you want to continue ?", this, new ConfirmDialogListener() {				
 				@Override
 				public void onConfirm() {
@@ -809,8 +796,7 @@ public class MainActivity extends ListActivity
 				public void onCancel() { }
 			}).show();
 			
-			mLastBackPressTime = 0;
-		}
+		
 	}
 
 	
